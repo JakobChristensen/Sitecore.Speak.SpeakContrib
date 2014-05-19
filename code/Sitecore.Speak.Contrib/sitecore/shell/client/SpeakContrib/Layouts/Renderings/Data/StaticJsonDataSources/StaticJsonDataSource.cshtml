@@ -1,0 +1,31 @@
+﻿@using Sitecore.Mvc.Presentation
+@model Sitecore.Shell.Client.Bootstrap3.Layouts.Renderings.Data.StaticJsonDataSources.StaticJsonDataSourceRenderingModel
+@{
+  var dataSource = Model.JsonDataSource;
+  if (string.IsNullOrEmpty(dataSource))
+  {
+    return;
+  }
+
+  var dataSourceItem = Model.Database.GetItem(dataSource);
+  if (dataSourceItem == null)
+  {
+    return;
+  }
+
+  Model.Properties["Data"] = "[]";
+  
+  Model.Attributes[HtmlTextWriterAttribute.Type] = "text/x-sitecore-staticjsondatasource";
+  Model.Presenter = Presenters.Knockout;
+
+  var fieldName = Model.JsonFieldName;
+  if (string.IsNullOrEmpty(fieldName))
+  {
+    fieldName = "Data";
+  }
+
+  var json = dataSourceItem[fieldName];
+}
+<script @Model.HtmlAttributes>
+@Html.Raw(json)
+</script>

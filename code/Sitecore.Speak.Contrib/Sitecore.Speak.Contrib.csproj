@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{71A0C9E9-7854-49BE-BC0C-B8F5B6E125C9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sitecore</RootNamespace>
+    <AssemblyName>Sitecore.Speak.SpeakContrib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Kernel">
+      <HintPath>..\Components\Sitecore.Kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Mvc">
+      <HintPath>..\Components\Sitecore.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Speak.Client">
+      <HintPath>..\Components\Sitecore.Speak.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Common\ActionManagers\ActionManager.cshtml" />
+    <Content Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Common\Anchors\Anchor.cshtml" />
+    <Content Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Common\InlineStyles\InlineStyle.cshtml" />
+    <Content Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Common\Stylesheets\Stylesheet.cshtml" />
+    <Content Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Data\AjaxDataSources\AjaxDataSource.cshtml" />
+    <Content Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Data\StaticJsonDataSources\StaticJsonDataSource.cshtml" />
+    <Content Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Resources\AppModels\AppModel.ashx" />
+    <Content Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Resources\AppModels\AppModel.cshtml" />
+    <Content Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Resources\PageModels\PageModel.cshtml" />
+    <Content Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\System\Debuggers\Debugger.cshtml" />
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sitecore\shell\client\SpeakContrib\Assets\lib\core\1.2\Sitecore.Speak.Apps.js" />
+    <Content Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Data\StaticJsonDataSources\StaticJsonDataSource.js" />
+    <Content Include="sitecore\shell\client\Speak\Assets\lib\core\1.2\SitecoreSpeak.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Common\ActionManagers\ActionManagerRenderingModel.cs">
+      <DependentUpon>ActionManager.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Common\Anchors\AnchorRenderingModel.cs">
+      <DependentUpon>Anchor.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Common\InlineStyles\InlineStyleRenderingModel.cs">
+      <DependentUpon>InlineStyle.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Common\Stylesheets\StylesheetRenderingModel.cs">
+      <DependentUpon>Stylesheet.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Data\AjaxDataSources\AjaxDataSourceRenderingModel.cs">
+      <DependentUpon>AjaxDataSource.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Data\StaticJsonDataSources\StaticJsonDataSourceRenderingModel.cs">
+      <DependentUpon>StaticJsonDataSource.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Resources\AppModels\AppModel.ashx.cs">
+      <DependentUpon>AppModel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Resources\AppModels\AppModelRenderingModel.cs">
+      <DependentUpon>AppModel.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Resources\PageModels\PageModelRenderingModel.cs">
+      <DependentUpon>PageModel.cshtml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\requirejs\require.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
+    <TypeScriptCompile Include="sitecore\shell\client\SpeakContrib\Assets\lib\core\1.2\Sitecore.Speak.Apps.d.ts" />
+    <TypeScriptCompile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Common\ActionManagers\ActionManager.ts" />
+    <TypeScriptCompile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Data\AjaxDataSources\AjaxDataSource.ts" />
+    <TypeScriptCompile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Resources\AppModels\AppModel.ts" />
+    <TypeScriptCompile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\Resources\PageModels\PageModel.ts" />
+    <TypeScriptCompile Include="sitecore\shell\client\SpeakContrib\Layouts\Renderings\System\Debuggers\Debugger.ts" />
+    <TypeScriptCompile Include="sitecore\shell\client\Speak\Assets\lib\core\1.2\Sitecore.Speak.d.ts" />
+    <TypeScriptCompile Include="sitecore\shell\client\Speak\Assets\lib\core\1.2\SitecoreSpeak.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptModuleKind>amd</TypeScriptModuleKind>
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53187</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53187/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,128 @@
+﻿@using Sitecore.Data.Managers
+@using Sitecore.Extensions.StringExtensions
+@using Sitecore.Web
+@model Sitecore.Shell.Client.SpeakContrib.Layouts.Renderings.Resources.AppModelRenderingModel
+@functions {
+  private static readonly char[] separator =
+  {
+    ','
+  };
+}
+@{
+  var app = Model.PageItem;
+  while (app != null && string.IsNullOrEmpty(app["AppModelTemplate"]))
+  {
+    app = app.Parent;
+  }
+
+  if (app == null)
+  {
+    return;             
+  }
+
+  var templateItem = app.Database.GetItem(app["AppModelTemplate"]);
+  if (templateItem == null)
+  {
+    return;
+  }
+
+  var template = TemplateManager.GetTemplate(templateItem.ID, app.Database);
+  if (template == null)
+  {
+    return;
+  }
+
+  var appModelKey = WebUtil.GetQueryString("AppModelKey");
+  if (string.IsNullOrEmpty(appModelKey))
+  {
+    appModelKey = this.Request.Form["AppModelKey"];
+  }
+  
+  if (string.IsNullOrEmpty(appModelKey))
+  {
+    return;
+  }
+
+  Model.Properties["AppModelKey"] = appModelKey;
+
+  var appModelSessionKey = "SC_APPMODEL_" + appModelKey;
+  var appModel = Session[appModelSessionKey] as Dictionary<string, string>;
+  if (appModel == null)
+  {
+    appModel = new Dictionary<string, string>();
+    Session[appModelSessionKey] = appModel;
+  }
+  
+  foreach (var templateField in template.GetFields(true))
+  {
+    if (templateField.Template.BaseIDs.Length == 0)
+    {
+      continue;
+    }
+
+    var name = templateField.Name;
+    string value = null;
+
+    // get value from form post
+    var formValue = this.Request.Form[name];
+    if (formValue != null)
+    {
+      value = formValue;
+    }
+
+    // get value from query string
+    if (value == null)
+    {
+      var queryStringValue = WebUtil.GetQueryString(name, null);
+      if (queryStringValue != null)
+      {
+        value = queryStringValue;
+      }
+    }
+
+    // get value from session
+    if (value == null)
+    {
+      appModel.TryGetValue(name, out value);
+    }
+
+    // get value from app item
+    if (value == null)
+    {
+      if (app.Fields["AppModel" + name] != null)
+      {
+        value = app["AppModel" + name];
+      }
+    }
+
+    // get value from default value
+    if (value == null)
+    {
+      value = templateField.DefaultValue;
+    }
+
+    if (value != null)
+    {
+      appModel[name] = value;
+      Model.Properties[name] = value;
+    }
+  }
+
+  var bindings = Model.Bindings.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+  foreach (var binding in bindings)
+  {
+    var n = binding.IndexOf('=');
+    if (n < 0)
+    {
+      throw new InvalidOperationException("Binding syntax is not valid. Use the syntax PropertyName=BindTo,PropertyName=BindTo.");
+    }
+
+    var propertyName = binding.Left(n).Trim();
+    var bindTo = binding.Mid(n + 1).Trim();
+    
+    Model.AddBinding(propertyName, bindTo);
+  }
+
+    Model.Attributes[HtmlTextWriterAttribute.Type] = "text/x-sitecore-appmodel";
+}      
+<script @Model.HtmlAttributes> </script>

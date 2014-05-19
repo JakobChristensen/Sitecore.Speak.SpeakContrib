@@ -1,0 +1,72 @@
+----item----
+version: 1
+id: {128C2FC4-2E75-46C7-8261-11771B435019}
+database: core
+path: /sitecore/client/SpeakContrib/Layouts/Renderings/System/Debugger
+parent: {98C7FE04-8488-42D7-9853-CFD7F8F45FC9}
+name: Debugger
+master: {00000000-0000-0000-0000-000000000000}
+template: {99F8905D-4A87-4EB8-9F8B-A9BEBFB3ADD6}
+templatekey: View rendering
+
+----field----
+field: {51B435BC-F7B9-478A-9C51-52916AF96FF5}
+name: Path
+key: path
+content-length: 87
+
+/sitecore/shell/client/SpeakContrib/Layouts/Renderings/System/Debuggers/Debugger.cshtml
+----field----
+field: {EF7C5528-7307-4E19-863B-DA19EED6A9ED}
+name: Open Properties after Add
+key: open properties after add
+content-length: 1
+
+-
+----field----
+field: {989631C3-8CD3-4D04-A996-7C1F4EEC75A4}
+name: Default Parameters
+key: default parameters
+content-length: 21
+
+Placeholder=Page.Body
+----field----
+field: {308E88F5-CD6E-4F8F-BAFE-95A47DEDEFDC}
+name: Editable
+key: editable
+content-length: 1
+
+1
+----version----
+language: en
+version: 1
+revision: 48111dd5-7c6c-4657-9ca0-a5cb98f85e69
+
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 15
+
+20130823T084224
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+48111dd5-7c6c-4657-9ca0-a5cb98f85e69
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 34
+
+20140408T201855:635325851351271406
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\admin

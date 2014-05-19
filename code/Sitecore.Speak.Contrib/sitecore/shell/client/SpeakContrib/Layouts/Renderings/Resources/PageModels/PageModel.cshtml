@@ -1,0 +1,114 @@
+﻿@model Sitecore.Shell.Client.SpeakContrib.Layouts.Renderings.Resources.PageModels.PageModelRenderingModel
+@using Sitecore.Data.Managers
+@using Sitecore.Extensions.StringExtensions
+@using Sitecore.Web
+@model Sitecore.Shell.Client.SpeakContrib.Layouts.Renderings.Resources.AppModelRenderingModel
+@functions {
+  private static readonly char[] separator =
+  {
+    ','
+  };
+}
+@{
+  var page = Model.PageItem;
+  while (page != null && string.IsNullOrEmpty(page["PageModelTemplate"]))
+  {
+    page = page.Parent;
+  }
+
+  if (page == null)
+  {
+    return;
+  }
+
+  var templateItem = page.Database.GetItem(page["PageModelTemplate"]);
+  if (templateItem == null)
+  {
+    return;
+  }
+
+  var template = TemplateManager.GetTemplate(templateItem.ID, page.Database);
+  if (template == null)
+  {
+    return;
+  }
+
+  var pageModelKey = WebUtil.GetQueryString("PageModelKey");
+  if (string.IsNullOrEmpty(pageModelKey))
+  {
+    pageModelKey = this.Request.Form["PageModelKey"];
+  }
+
+  if (string.IsNullOrEmpty(pageModelKey))
+  {
+    return;             
+  }
+
+  Model.Properties["PageModelKey"] = pageModelKey;
+
+  var pageModel = new Dictionary<string, string>();
+
+  foreach (var templateField in template.GetFields(true))
+  {
+    if (templateField.Template.BaseIDs.Length == 0)
+    {
+      continue;
+    }
+
+    var name = templateField.Name;
+    string value = null;
+
+    // get value from form post
+    var formValue = this.Request.Form[name];
+    if (formValue != null)
+    {
+      value = formValue;
+    }
+
+    // get value from query string
+    if (value == null)
+    {
+      var queryStringValue = WebUtil.GetQueryString(name, null);
+      if (queryStringValue != null)
+      {
+        value = queryStringValue;
+      }
+    }
+
+    // get value from session
+    if (value == null)
+    {
+      pageModel.TryGetValue(name, out value);
+    }
+
+    // get value from default value
+    if (value == null)
+    {
+      value = templateField.DefaultValue;
+    }
+
+    if (value != null)
+    {
+      pageModel[name] = value;
+      Model.Properties[name] = value;
+    }
+  }
+
+  var bindings = Model.Bindings.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+  foreach (var binding in bindings)
+  {
+    var n = binding.IndexOf('=');
+    if (n < 0)
+    {
+      throw new InvalidOperationException("Binding syntax is not valid. Use the syntax PropertyName=BindTo,PropertyName=BindTo.");
+    }
+
+    var propertyName = binding.Left(n).Trim();
+    var bindTo = binding.Mid(n + 1).Trim();
+
+    Model.AddBinding(propertyName, bindTo);
+  }
+
+  Model.Attributes[HtmlTextWriterAttribute.Type] = "text/x-sitecore-pagemodel";
+}
+<script @Model.HtmlAttributes> </script>
